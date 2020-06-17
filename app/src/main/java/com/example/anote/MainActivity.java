@@ -23,7 +23,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainVm> {
     @Override
     public void initViewObservable() {
 //        mBinding.getViewModel().addNote("测试地址","http://doc.bmob.cn/data/android/develop_doc/#4");
-//        mBinding.getViewModel().getNotes();
+        mViewModel.getNotes();
 
     }
 

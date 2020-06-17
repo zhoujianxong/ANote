@@ -26,43 +26,49 @@ import java.util.List;
  */
 public abstract class BaseAdapter<T,VDB extends ViewDataBinding> extends BaseQuickAdapter<T,BaseAdapter.VH> {
     private ObservableList<T> mTObservableList;//让list数据变更后自动notifyItemRangeChanged刷新
+
+    /**
+     * 初始化
+     * @param layoutResId
+     * @param data
+     */
     protected BaseAdapter(@LayoutRes int layoutResId, @Nullable List<T> data) {
         super(layoutResId, data);
-//        this.mTObservableList = data == null ? new ObservableArrayList<>() : (ObservableList<T>) data;
-//        if (layoutResId != 0) {
-//            this.mLayoutResId = layoutResId;
-//        }
-//        mTObservableList.addOnListChangedCallback(new ObservableList.OnListChangedCallback<ObservableList<T>>() {
-//            @Override
-//            public void onChanged(ObservableList<T> ts) {
-//                 notifyDataSetChanged();
-//            }
-//            @Override
-//            public void onItemRangeChanged(ObservableList<T> ts, int positionStart, int itemCount) {
-//                notifyItemRangeChanged(positionStart, itemCount);
-//            }
-//
-//            @Override
-//            public void onItemRangeInserted(ObservableList<T> ts, int positionStart, int itemCount) {
-//                //踩坑提示：使用 quickadapter.setEmptyView 设置空布局后， 刷新又有了数据 必须调用mAdapter.setNewData(mList); 而不是调用notifyDataSetChanged()系列; 否则会报错
-//                if(ConfigApi.EMPTY_VIEW){
-//                    setNewData(ts);
-//                }else{
-//                    notifyItemRangeInserted(positionStart, itemCount);
-//                }
-//            }
-//
-//            @Override
-//            public void onItemRangeMoved(ObservableList<T> ts, int fromPosition, int toPosition, int itemCount) {
-//                for (int i = 0; i < itemCount; i++) {
-//                    notifyItemMoved(fromPosition + i, toPosition + i);
-//                }
-//            }
-//            @Override
-//            public void onItemRangeRemoved(ObservableList<T> ts, int positionStart, int itemCount) {
-//                notifyItemRangeRemoved(positionStart, itemCount);
-//            }
-//        });
+        this.mTObservableList = data == null ? new ObservableArrayList<>() : (ObservableList<T>) data;
+        if (layoutResId != 0) {
+            this.mLayoutResId = layoutResId;
+        }
+        mTObservableList.addOnListChangedCallback(new ObservableList.OnListChangedCallback<ObservableList<T>>() {
+            @Override
+            public void onChanged(ObservableList<T> ts) {
+                 notifyDataSetChanged();
+            }
+            @Override
+            public void onItemRangeChanged(ObservableList<T> ts, int positionStart, int itemCount) {
+                notifyItemRangeChanged(positionStart, itemCount);
+            }
+
+            @Override
+            public void onItemRangeInserted(ObservableList<T> ts, int positionStart, int itemCount) {
+                //踩坑提示：使用 quickadapter.setEmptyView 设置空布局后， 刷新又有了数据 必须调用mAdapter.setNewData(mList); 而不是调用notifyDataSetChanged()系列; 否则会报错
+                if(ConfigApi.EMPTY_VIEW){
+                    setNewData(ts);
+                }else{
+                    notifyItemRangeInserted(positionStart, itemCount);
+                }
+            }
+
+            @Override
+            public void onItemRangeMoved(ObservableList<T> ts, int fromPosition, int toPosition, int itemCount) {
+                for (int i = 0; i < itemCount; i++) {
+                    notifyItemMoved(fromPosition + i, toPosition + i);
+                }
+            }
+            @Override
+            public void onItemRangeRemoved(ObservableList<T> ts, int positionStart, int itemCount) {
+                notifyItemRangeRemoved(positionStart, itemCount);
+            }
+        });
     }
 
     @Override
