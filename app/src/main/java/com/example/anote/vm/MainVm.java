@@ -7,10 +7,10 @@ import androidx.databinding.ObservableArrayList;
 
 import com.blankj.ALog;
 import com.example.anote.R;
+import com.example.anote.base.BaseVM;
 import com.example.anote.bean.NoteBean;
 import com.example.anote.databinding.ItemMianBinding;
 import com.example.commlib.base.mvvm.BaseAdapter;
-import com.example.commlib.base.mvvm.BaseViewModel;
 import java.util.List;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
@@ -18,36 +18,14 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 
-public class MainVm extends BaseViewModel {
+public class MainVm extends BaseVM {
     public MainVm(@NonNull Application application) {
         super(application);
     }
 
-    @Override
-    public void onBundle(Bundle bundle) {
 
-    }
 
     private ObservableArrayList<NoteBean> mList=new ObservableArrayList<>();
-
-//    public BaseMvvmRecyclerAdapter<NoteBean> mAdapter=new BaseMvvmRecyclerAdapter<NoteBean>(R.layout.item_mian, mList) {
-//        @Override
-//        public void convert(BindingViewHolder holder, NoteBean item,int position) {
-//
-//            holder.itemView.setOnClickListener(v -> {
-//                //当然可以直接在这toast,这里示例：回调给activity去处理
-//                //ToastUtils.showShort(item.getLink());
-//                WebViewActivity.loadUrl(item.getWebUrl(),null);
-//            });
-//            holder.itemView.setOnLongClickListener(v -> {
-////                Bundle bundle=new Bundle();
-////                bundle.putSerializable("bannerBean",null);
-////                startActivity(MainDetailActivity.class,bundle);
-//                return true;
-//            });
-//
-//        }
-//    };
 
     public BaseAdapter mAdapter=new BaseAdapter<NoteBean,ItemMianBinding>(R.layout.item_mian, mList){
         @Override

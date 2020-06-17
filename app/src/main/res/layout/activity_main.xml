@@ -26,7 +26,6 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mRecyclerView"
-                bindAdapterAnimation="@{LayoutManagers.SCALEIN}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingStart="10dp"
@@ -35,6 +34,7 @@
                 android:scrollbars="vertical"
                 app:adapter="@{mainVm.mAdapter}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+<!--            bindAdapterAnimation="@{LayoutManagers.SCALEIN}"-->
 
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>

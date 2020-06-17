@@ -25,10 +25,13 @@ import java.util.List;
  * @time 2020/06/15 18:54
  */
 public abstract class BaseAdapter<T,VDB extends ViewDataBinding> extends BaseQuickAdapter<T,BaseAdapter.VH> {
-    private ObservableList<T> mTObservableList;//让list数据变更后自动notifyItemRangeChanged刷新
+    /**
+     * 让list数据变更后自动notifyItemRangeChanged刷新
+     */
+    private ObservableList<T> mTObservableList;
 
     /**
-     * 初始化
+     *
      * @param layoutResId
      * @param data
      */
