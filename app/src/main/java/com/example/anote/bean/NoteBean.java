@@ -5,6 +5,7 @@ import cn.bmob.v3.BmobObject;
 public class NoteBean extends BmobObject {
     private String title;
     private String webUrl;
+    private String describe;
 
     public String getTitle() {
         return title;
@@ -22,11 +23,20 @@ public class NoteBean extends BmobObject {
         this.webUrl = webUrl;
     }
 
+    public String getDescribe() {
+        return describe;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe;
+    }
+
     @Override
     public String toString() {
         return "NoteBean{" +
                 "title='" + title + '\'' +
                 ", webUrl='" + webUrl + '\'' +
+                ", describe='" + describe + '\'' +
                 '}';
     }
 }

@@ -15,26 +15,27 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/db_bg"
         tools:context=".MainActivity">
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/mRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/ui_activity_bg"
             app:srlEnableLoadMore="true">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="25dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:scrollbarStyle="outsideOverlay"
                 android:scrollbars="vertical"
                 app:adapter="@{mainVm.mAdapter}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-<!--            bindAdapterAnimation="@{LayoutManagers.SCALEIN}"-->
+            <!--            bindAdapterAnimation="@{LayoutManagers.SCALEIN}"-->
 
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>

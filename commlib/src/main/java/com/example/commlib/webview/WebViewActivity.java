@@ -174,11 +174,11 @@ public class WebViewActivity extends BaseWebAcivity<ActivityWebviewBinding, Base
      * @param mTitle 标题
      */
     public static void loadUrl(String mUrl, String mTitle) {
-        Intent intent = new Intent(App.getInstance(), WebViewActivity.class);
+        Intent intent = new Intent(App.getInstance().mContext, WebViewActivity.class);
         intent.putExtra("mUrl", mUrl);
         intent.putExtra("mTitle", mTitle == null ? "加载中..." : mTitle);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        App.getInstance().startActivity(intent);
+        App.getInstance().mContext.startActivity(intent);
     }
 
 

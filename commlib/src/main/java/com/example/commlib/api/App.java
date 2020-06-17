@@ -26,7 +26,7 @@ import java.util.ArrayList;
  * @CreateDate: 2019/10/22 16:24
  */
 public class App extends MultiDexApplication implements IBaseApplication {
-    private Context mContext;
+    public Context mContext;
     public static App app;
    // public static volatile App app;
     public static App getInstance() {

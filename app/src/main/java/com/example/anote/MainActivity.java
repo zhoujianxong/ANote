@@ -25,6 +25,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainVm> {
     @Override
     protected void initViewObservable() {
 //        mViewModel.addNote("测试地址","http://doc.bmob.cn/data/android/develop_doc/#4");
+        mBinding.setMainVm(mViewModel);
         mViewModel.getNotes();
     }
 }
