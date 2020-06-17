@@ -52,15 +52,13 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
             return;
         }
         mBinding = DataBindingUtil.setContentView(this, getLayoutId());
-        mViewModel = initMVVMViewModel();
 
         if (mViewModel == null) {
             createViewModel();
         }
 
         if (mViewModel != null) {
-            mBinding.setVariable(initVariableId(), mViewModel);
-
+            //mBinding.setVariable(initVariableId(), mViewModel);
             registorLiveDataCallBack();
             //页面事件监听的方法 用于ViewModel层转到View层的事件注册
             initViewObservable();

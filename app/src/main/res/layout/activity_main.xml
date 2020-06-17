@@ -5,9 +5,9 @@
 
         <import type="com.example.commlib.weight.recyclerview.LayoutManagers" />
 
-<!--        <variable-->
-<!--            name="mainVm"-->
-<!--            type="com.example.anote.vm.MainVm" />-->
+        <variable
+            name="mainVm"
+            type="com.example.anote.vm.MainVm" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,16 +26,16 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mRecyclerView"
-                bindAdapterAnimation="@{LayoutManagers.SCALEIN}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:scrollbarStyle="outsideOverlay"
                 android:scrollbars="vertical"
-
+                app:adapter="@{mainVm.mAdapter}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-<!--            app:adapter="@{mainVm.mAdapter}"-->
+<!--            bindAdapterAnimation="@{LayoutManagers.SCALEIN}"-->
+
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
