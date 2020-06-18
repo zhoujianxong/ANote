@@ -76,7 +76,7 @@ public abstract class BaseAdapter<T,VDB extends ViewDataBinding> extends BaseQui
 
     @Override
     protected void convert(@NonNull VH helper, T item) {
-        vdbConvert(DataBindingUtil.bind(helper.itemView),item);
+        vdbConvert(DataBindingUtil.bind(helper.itemView),item,helper.getAdapterPosition());
     }
 
     static class VH extends BaseViewHolder {
@@ -85,6 +85,6 @@ public abstract class BaseAdapter<T,VDB extends ViewDataBinding> extends BaseQui
         }
     }
 
-    public abstract void vdbConvert(VDB vdb,T item);
+    public abstract void vdbConvert(VDB vdb,T item,int position);
 
 }

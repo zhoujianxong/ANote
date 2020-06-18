@@ -8,8 +8,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginBottom="@dimen/dp_16"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/dp_12"
         android:background="@drawable/db_bg">
+
+        <TextView
+            android:id="@+id/mId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:textColor="@color/colorText1"
+            android:ellipsize="end"
+            android:paddingLeft="@dimen/dp_16"
+            android:text="10"
+            android:gravity="center_vertical" />
 
         <TextView
             android:id="@+id/mTextView"
@@ -17,9 +31,10 @@
             android:layout_height="match_parent"
             android:textSize="@dimen/sp_15"
             android:textStyle="bold"
-            android:maxLines="3"
+            android:maxLines="2"
+            android:textColor="@color/colorText1"
             android:ellipsize="end"
-            android:paddingLeft="@dimen/dp_16"
+            android:paddingLeft="@dimen/dp_10"
             android:paddingRight="@dimen/dp_16"
             android:text="一个队列里找两个元素之和等于某值"
             android:gravity="center_vertical" />

@@ -42,26 +42,33 @@ public class MainVm extends BaseVM {
     public BaseAdapter mAdapter = new BaseAdapter<NoteBean, ItemMianBinding>(R.layout.item_mian, mList) {
         @SuppressLint("NewApi")
         @Override
-        public void vdbConvert(ItemMianBinding itemMianBinding, NoteBean item) {
+        public void vdbConvert(ItemMianBinding itemMianBinding, NoteBean item,int position) {
+            //标题
             String title = item.getTitle();
+            //介绍描述
             String describe = item.getDescribe();
             if (title != null) {
                 String content = item.getTitle();
                 if (describe != null) {
-                    content = content + item.getDescribe();
+                    //合并内容
+                    content =content + item.getDescribe();
                 }
                 SpannableString spannableString = new SpannableString(content);
+                //标题加粗
                 spannableString.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, item.getTitle().length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-                if (describe!=null){
+                if (describe != null) {
+                    //介绍字体减小  颜色淡化设置   字体变细
                     spannableString.setSpan(new StyleSpan(android.graphics.Typeface.NORMAL), item.getTitle().length(), content.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-                    spannableString.setSpan(new AbsoluteSizeSpan(35), item.getTitle().length(), content.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    spannableString.setSpan(new ForegroundColorSpan(getApplication().getColor(R.color.black_aplsh40)), item.getTitle().length(), content.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannableString.setSpan(new AbsoluteSizeSpan(30), item.getTitle().length(), content.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannableString.setSpan(new ForegroundColorSpan(getApplication().getColor(R.color.colorText2)), item.getTitle().length(), content.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
                 itemMianBinding.mTextView.setText(spannableString);
             }
+            itemMianBinding.mId.setText(""+position);
 
 
             itemMianBinding.getRoot().setOnClickListener(v -> {
+                //调到相应的博客
                 WebViewActivity.loadUrl(item.getWebUrl(), null);
             });
         }
@@ -73,10 +80,11 @@ public class MainVm extends BaseVM {
      * @param title
      * @param url
      */
-    public void addNote(String title, String url) {
+    public void addNote(String title, String url, String describe) {
         NoteBean noteBean = new NoteBean();
         noteBean.setTitle(title);
         noteBean.setWebUrl(url);
+        noteBean.setDescribe(describe);
         noteBean.save(new SaveListener<String>() {
             @Override
             public void done(String objectId, BmobException e) {
@@ -107,26 +115,41 @@ public class MainVm extends BaseVM {
         });
     }
 
-    public void getNotes() {
+    public void getNotes(int skip) {
         //查找Person表里面id为6b6c11c537的数据
         BmobQuery<NoteBean> bmobQuery = new BmobQuery<>();
-//        bmobQuery.setLimit(8).setSkip(1).order("-createdAt")
-        bmobQuery.setLimit(17).order("-createdAt")
+        //一次取10条  skip跳过多少条 做分页查询
+        bmobQuery.setLimit(15).setSkip(skip).order("-createdAt")
                 .findObjects(new FindListener<NoteBean>() {
                     @Override
                     public void done(List<NoteBean> noteBeans, BmobException e) {
                         if (e == null) {
                             ALog.v("查询成功 " + noteBeans);
-                            mList.addAll(noteBeans);
+                            if (skip == 0) {
+                                mList.clear();
+                                mList.addAll(noteBeans);
+                            } else {
+                                mList.addAll(noteBeans);
+                            }
                         } else {
                             ALog.v("查询失败：" + e.getMessage());
                         }
                     }
                 });
-
-//        Disposable disposable=;
-//        Observable
     }
 
-    private LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplication());
+    /**
+     * 刷新
+     */
+    public void reFresh() {
+        getNotes(0);
+    }
+
+    /**
+     * 加载
+     */
+    public void loadMore() {
+        getNotes(mList.size());
+    }
+
 }

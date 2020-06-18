@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.anote.ANoteApplication;
 import com.example.commlib.base.RootActivity;
-import com.example.commlib.base.mvvm.BaseViewModel;
 
 public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVM> extends RootActivity {
     public V mBinding;
