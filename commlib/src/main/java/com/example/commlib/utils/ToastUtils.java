@@ -89,7 +89,9 @@ public final class ToastUtils {
                 return view;
             }
         }
-        if (sToast != null) return sToast.getView();
+        if (sToast != null) {
+            return sToast.getView();
+        }
         return null;
     }
 

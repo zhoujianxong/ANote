@@ -31,8 +31,8 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 
-public class MainVm extends BaseVM {
-    public MainVm(@NonNull Application application) {
+public class MainVM extends BaseVM {
+    public MainVM(@NonNull Application application) {
         super(application);
     }
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="48dp"
+    android:padding="@dimen/sp_14"
+    android:background="@drawable/bg_addbg"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_12"
+        android:src="@drawable/bg_headic"/>
+
+    <EditText
+        android:id="@+id/dialog_center_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#4A4A4A"
+        android:padding="12dp"
+        android:layout_marginTop="@dimen/dp_12"
+        android:background="@null"
+        android:hint="用户名："
+        android:textSize="14sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_line"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/dialog_center_sure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:padding="14dp"
+            android:text="添加"
+            android:textColor="@color/color_blue"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_line"
+            tools:ignore="Suspicious0dp" />
+
+        <TextView
+            android:id="@+id/dialog_center_cancel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="14dp"
+            android:text="取消"
+            android:textColor="@color/color_blue"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>

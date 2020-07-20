@@ -39,6 +39,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.UUID;
 
 import static com.example.commlib.utils.DensityUtil.getScreenWidth;
 
@@ -552,6 +553,13 @@ public class CommUtils {
         String  mm=(miss % 3600)/60>9?(miss % 3600)/60+"":"0"+(miss % 3600)/60;
         String ss=(miss % 3600) % 60>9?(miss % 3600) % 60+"":"0"+(miss % 3600) % 60;
         return hh+"小时"+mm+"分钟"+ss+"秒";
+    }
+
+    /**
+     * 获取一个uuid 去掉-
+     */
+    public static String getUUID(){
+        return UUID.randomUUID().toString().replaceAll("-","");
     }
 
 }

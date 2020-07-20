@@ -1,15 +1,16 @@
-package com.example.anote;
+package com.example.anote.activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
+import com.example.anote.R;
 import com.example.anote.base.BaseActivity;
 import com.example.anote.databinding.ActivityMainBinding;
 import com.example.anote.interf.MyRefreshListener;
-import com.example.anote.vm.MainVm;
+import com.example.anote.vm.MainVM;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
-public class MainActivity extends BaseActivity<ActivityMainBinding, MainVm> {
+public class MainActivity extends BaseActivity<ActivityMainBinding, MainVM> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +23,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainVm> {
     }
 
     @Override
-    protected Class<MainVm> getVM() {
-        return MainVm.class;
+    protected Class<MainVM> getVM() {
+        return MainVM.class;
     }
 
 
