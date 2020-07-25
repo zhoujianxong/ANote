@@ -45,5 +45,7 @@ dependencies {
     implementation 'cn.bmob.android:bmob-sdk:3.7.8'
     implementation 'com.squareup.okio:okio:2.2.2'
     implementation 'com.google.code.gson:gson:2.8.6'
+    //liveDataBus
+    implementation 'com.jeremyliao:live-event-bus-x:1.7.2'
 
 }
